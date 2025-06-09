@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+
+@plugin "daisyui" {
+    themes: corporate --default, dark --prefersdark;
+  }
+
+ .font-poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+.font-cairo {
+    font-family: 'Cairo', sans-serif;
+}
+
+
+/* RTL specific styles */
+[dir="rtl"] {
+    direction: rtl;
+}
+
+/* DaisyUI RTL overrides */
+[dir="rtl"] .dropdown-end .dropdown-content {
+    right: auto !important;
+    left: 0 !important;
+}
+
+[dir="rtl"] .menu li > *:not(ul):not(.menu-title):not(details) {
+    text-align: right;
+}
+
+[dir="rtl"] .btn-group > input:first-child.btn,
+[dir="rtl"] .btn-group > .btn:first-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: var(--rounded-btn, 0.5rem);
+    border-bottom-right-radius: var(--rounded-btn, 0.5rem);
+}
+
+[dir="rtl"] .btn-group > input:last-child.btn,
+[dir="rtl"] .btn-group > .btn:last-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: var(--rounded-btn, 0.5rem);
+    border-bottom-left-radius: var(--rounded-btn, 0.5rem);
+}
+.rich-editor {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+.rich-editor:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.editor-toolbar {
+    border: 1px solid #d1d5db;
+    border-bottom: none;
+    border-radius: 0.375rem 0.375rem 0 0;
+    background: #f9fafb;
+    padding: 0.5rem;
+}
+
+.rich-editor.ck-editor__editable {
+    border-radius: 0 0 0.375rem 0.375rem;
+    border-top: none;
+}
+
+/* Custom alignment classes */
+.text-left { text-align: left !important; }
+.text-center { text-align: center !important; }
+.text-right { text-align: right !important; }
+.text-justify { text-align: justify !important; }

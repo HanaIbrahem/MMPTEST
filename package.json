@@ -1,0 +1,33 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite"
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.5.2",
+        "@tailwindcss/vite": "^4.0.0",
+        "alpinejs": "^3.4.2",
+        "autoprefixer": "^10.4.2",
+        "axios": "^1.8.2",
+        "concurrently": "^9.0.1",
+        "daisyui": "^5.0.35",
+        "laravel-vite-plugin": "^1.2.0",
+        "postcss": "^8.4.31",
+        "tailwindcss": "^4.1.7",
+        "vite": "^6.2.4"
+    },
+    "dependencies": {
+        "@ckeditor/ckeditor5-build-decoupled-document": "^41.4.2",
+        "alpinejs": "^3.14.9",
+        "datatables.net": "^2.3.1",
+        "datatables.net-buttons": "^3.2.3",
+        "datatables.net-buttons-dt": "^3.2.3",
+        "datatables.net-dt": "^2.3.1",
+        "jquery": "^3.7.1",
+        "jszip": "^3.10.1",
+        "pdfmake": "^0.2.20",
+        "quill": "^2.0.3"
+    }
+}
