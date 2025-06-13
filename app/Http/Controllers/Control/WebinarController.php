@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Webinar;
 use Illuminate\Support\Facades\Storage;
-
+use App\Models\Branch;
 class WebinarController extends Controller
 {
     /**
@@ -15,9 +15,11 @@ class WebinarController extends Controller
     public function index()
     {
         //
+        $branches=Branch::where('is_active', true)->latest()->get();    
         $webinars = Webinar::latest()->get();
         return view('dashbord.webinar.index', [
             'webinars' => $webinars,
+            'branches'  =>$branches,
         ]);
     }
 
@@ -39,11 +41,12 @@ class WebinarController extends Controller
             'title' => 'required|array',
             'title.en' => 'required|string',
             'title.ku' => 'required|string',
-
+            'date'=>'required|date',
             'content' => 'required|array',
             'content.en' => 'required|string|min:10|max:30000',
             'content.ku' => 'required|string|min:10|max:30000',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'branch_id'=>'required|exists:branches,id',
         ]);
 
         // Handle file upload
@@ -76,8 +79,11 @@ class WebinarController extends Controller
     {
         //
         $webinar = Webinar::findOrFail($id);
+        $branches=Branch::where('is_active', true)->latest()->get();    
+
         return view('dashbord.webinar.edit', [
             'webinar' => $webinar,
+            'branches'=>$branches,
         ]);
     }
 
@@ -92,11 +98,11 @@ class WebinarController extends Controller
             'title' => 'required|array',
             'title.en' => 'required|string',
             'title.ku' => 'required|string',
-
+            'date'=>'required|date',
             'content' => 'required|array',
             'content.en' => 'required|string|min:10|max:30000',
             'content.ku' => 'required|string|min:10|max:30000',
-
+            'branch_id'=>'required|exists:branches,id',
             'image' => 'nullable|image',
         ]);
 

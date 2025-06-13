@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Contact;
-use App\Models\User;
+use App\Models\Webinar;
+use App\Models\Branch;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,9 +19,12 @@ class DatabaseSeeder extends Seeder
         // Question::factory(100)->create();
 
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'mmp@mmp.com',
-        ]);
+
+        Webinar::factory(100)->create();
+        // Branch::factory(count: 50)->create();
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'contact@mmp.com',
+        // ]);
     }
 }

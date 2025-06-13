@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Control\{ServiceController, QustionsController, ProductController, AboutController};
 use App\Http\Controllers\Control\ContactController;
 use App\Http\Controllers\Control\WebinarController;
+use App\Http\Controllers\Control\BranchController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\App;
@@ -27,14 +28,15 @@ Route::middleware([SetLocale::class])->group(function () {
     Route::get('/about', [FrontendController::class, 'about'])->name('about');
     Route::get('/qustions', [FrontendController::class, 'qustions'])->name('qustions');
     Route::get('/services', [FrontendController::class, 'services'])->name('services');
-    Route::get('/service/{service}', [FrontendController::class, 'service'])->name('service.show');
+    Route::get('/service/{service}/show', [FrontendController::class, 'service'])->name('service.show');
     Route::get('/products', [FrontendController::class, 'products'])->name('products');
-    Route::get('/product/{product}', [FrontendController::class, 'product'])->name('product.show');
+    Route::get('/product/{product}/show', [FrontendController::class, 'product'])->name('product.show');
 
     Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
-    Route::post('/contact/store', [FrontendController::class, 'storcontact'])->name('contact.store');
-   
+    Route::post('/contact/store', [FrontendController::class, 'storcontact'])->name('contact.store');  
     Route::get('/webinars', [FrontendController::class, 'Webinars'])->name('webinars');
+    Route::get('/webinars/filter', [FrontendController::class, 'filter'])->name('webinars.filter');
+    Route::get('/webinar/{webinar}/show', [FrontendController::class, 'Webinar'])->name('webinar.show');
 
 
     // ... other routes
@@ -53,12 +55,14 @@ Route::prefix('control')->as('control.')->middleware(['auth'])->group(function (
     Route::resource('/service', ServiceController::class);
     Route::resource('/qustions', QustionsController::class);
     Route::resource('/webienars', WebinarController::class);
+    Route::resource('/category', BranchController::class);
    
     // togle routes 
     Route::post('/qustions/{question}/toggle',[QustionsController::class,'toggle'])->name('qustions.toggle');
     Route::post('/webienars/{webinar}/toggle', [WebinarController::class, 'toggle'])->name('webienars.toggle');
     Route::post('/product/{product}/toggle', [ProductController::class, 'toggle'])->name('product.toggle');
     Route::post('/service/{service}/toggle', [ServiceController::class, 'toggle'])->name('service.toggle');
+    Route::post('/category/{branch}/toggle', [BranchController::class, 'toggle'])->name('category.toggle');
   
     // other routes
     Route::post('/settinges/update', [AdminController::class, 'update'])->name('settings.update');

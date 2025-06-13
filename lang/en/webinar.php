@@ -10,4 +10,9 @@ return [
     'date' => 'Date: :date',
     'view_details' => 'View Details',
     'no_webinars' => 'No webinars found.',
+    'all subjects'=>'All Subjects',
+    'subject'=>'Subject',
+    'no webinars found'=>'No Webinars Found' 
+
+
 ];

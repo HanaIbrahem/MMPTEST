@@ -16,6 +16,9 @@ import 'datatables.net-buttons/js/buttons.html5.js';
 import 'datatables.net-buttons/js/buttons.print.js';
 import 'datatables.net-buttons-dt/css/buttons.dataTables.css';
 
+// select box
+import TomSelect from 'tom-select';
+import 'tom-select/dist/css/tom-select.css';
 // Import JSZip for Excel export
 import JSZip from 'jszip';
 window.JSZip = JSZip;
@@ -150,5 +153,15 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => {
                 console.error('CKEditor initialization error:', error);
             });
+    });
+});
+
+
+
+
+// tom select box
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.tom-select').forEach(select => {
+        new TomSelect(select);
     });
 });

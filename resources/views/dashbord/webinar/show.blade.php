@@ -3,6 +3,7 @@
         <h1 class="text-secondary">Show Webinar</h1>
         <x-dashbord.card.show-attributes label="Title" :values="$webinar->title" />
         <x-dashbord.card.show-attributes label="Content" :values="$webinar->content" />
+        <x-dashbord.card.show-attributes label="Category" :values="$webinar->branch->title" />
         <x-dashbord.card.state :state="$webinar->is_active" />
         @if($webinar->image)
             <img src="{{ asset('storage/'.$webinar->image) }}" class="  max-w-1/2 mt-3">

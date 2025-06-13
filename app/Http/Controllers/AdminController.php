@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Setting;
+use App\Models\Webinar;
+use App\Models\Service;
+use App\Models\Product;
 use App\Models\User;
 class AdminController extends Controller
 {
@@ -21,9 +24,14 @@ class AdminController extends Controller
             'social_lin'
         ])->get()->keyBy('key');
 
+        $webinar=Webinar::count();
+        $product=Product ::count();
+        $service=Service::count();
+
 
         // dd($settings);
-        return view('dashbord.dashbord', compact('settings'));
+        return view('dashbord.dashbord', 
+        compact('settings','webinar','product','service'));
     }
 
 

@@ -54,6 +54,14 @@
                     <path d="M5 5h14v14H5zM7 7v10h10V7z" />
                 </svg>
             </x-dashbord.nav.nav-link>
+
+              <x-dashbord.nav.nav-link href="{{ route('control.category.index') }}" 
+            title="Webinar Category" :active="request()->routeIs('control.category.*')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor"
+                     viewBox="0 0 24 24">
+                    <path d="M5 5h14v14H5zM7 7v10h10V7z" />
+                </svg>
+            </x-dashbord.nav.nav-link>
             
             <x-dashbord.nav.nav-link href="{{ route('control.contact') }}" 
              :active="request()->routeIs('control.contact')" title="Contact">

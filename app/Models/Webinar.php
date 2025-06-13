@@ -13,13 +13,45 @@ class Webinar extends Model
     use HasTranslations;
     protected $guarded = [];
 
-    // app/Models/Question.php
-
-    protected $casts = [
+      protected $casts = [
 
         'title'=>'array',
         'content'=>'array',
-        'is_active' => 'boolean'
+        'is_active' => 'boolean',
+        'date'=>'date'
     ];
+
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class);
+    }
+  
+     public function scopeFilterByYear($query, $year)
+    {
+        if ($year) {
+            return $query->whereYear('date', $year);
+        }
+        return $query;
+    }
+
+    public function scopeFilterByBranch($query, $branchId)
+    {
+        if ($branchId) {
+            return $query->where('branch_id', $branchId);
+        }
+        return $query;
+    }
+
+    public function scopeSearch($query, $search)
+    {
+        if ($search) {
+            return $query->where(function($q) use ($search) {
+                $q->whereRaw("JSON_EXTRACT(title, '$.en') LIKE ?", ["%{$search}%"])
+                  ->orWhereRaw("JSON_EXTRACT(title, '$.ku') LIKE ?", ["%{$search}%"]);
+            });
+        }
+        return $query;
+    }
+    
 
 }

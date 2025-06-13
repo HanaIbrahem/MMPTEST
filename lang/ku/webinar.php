@@ -11,4 +11,8 @@ return [
     'date' => 'ڕێکەوت: :date',
     'view_details' => 'وردەکاری بینە',
     'no_webinars' => 'هیچ وێبینارێک نەدۆزرایەوە.',
+    'all subjects'=>'هەموو بابەتەکان',
+    'subject'=>'بابەت',
+    'no webinars found'=>'هیج وێبینارێک نەدۆزرایەوە',
+
 ];

@@ -14,7 +14,16 @@
                     :values="old('title', $webinar->title ?? [])" 
                 />
 
-               
+                <x-dashbord.form.date :value="$webinar->date" lable="Date" name="date"/>
+
+                 <x-dashbord.form.selectbox lable="Category" name="branch_id">
+
+                    @foreach ($branches as $branche )
+                        <option {{$branche->id ==$webinar->branch->id?'selected':''  }} value="{{ $branche->id }}">
+                            {{ $branche->title['en'] }}
+                        </option>
+                    @endforeach
+                </x-dashbord.form.selectbox>
                 <x-dashbord.form.editor name="content" label="Content" :values="old('content', $webinar->content ?? [])" :placeholders="['en' => 'Enter content', 'ku' => ' ناوەڕۆک بنوسە']" />
 
            
